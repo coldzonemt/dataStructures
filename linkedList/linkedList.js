@@ -1,16 +1,15 @@
-/////////////////////////////////////////////////////////////////////////////////////////////////
+ /////////////////////////////////////////////////////////////////////////////////////////////////
 // A linked list data structure is a dynamic strucutre that allows for constant time insertion //
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 var LinkedList = function() {
-	//this.list = {};
 	this.head = null; 
 	this.tail = null;
 }
 
 LinkedList.prototype.addToTail = function(value) {
 	
-	var newTail = Node(value); 
+	var newTail = new Node(value); 
 
 	if(!this.head) {
 		this.head = newTail; 
@@ -48,10 +47,7 @@ LinkedList.prototype.contains = function(value) {
 	return false; 
 }
 
-var Node = function(value) {
-	var node = {}; 
-	node.value = value; 
-	node.next = null; 
-
-	return node; 
+var Node = function(value) { 
+	this.value = value; 
+	this.next = null; 
 }
