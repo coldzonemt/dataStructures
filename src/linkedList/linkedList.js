@@ -47,7 +47,56 @@ LinkedList.prototype.contains = function(value) {
 	return false; 
 }
 
+LinkedList.prototype.reverse = function() {
+	var node = this.head; 
+	var prev = null; 
+	var temp; 
+	while(node) {
+		temp = node.next; 
+		node.next = prev; 
+		prev = node; 
+		node = temp; 
+	}
+
+	return prev;
+}
+
+LinkedList.prototype.reverseList = function() {
+	
+}
+
 var Node = function(value) { 
 	this.value = value; 
 	this.next = null; 
+}
+
+//if there is a corrupt list, you can use the "tortise" and the "hare" pointers to 
+//determine the length of the cycle
+LinkedList.prototype.getCycle = function() {
+  var pointer1 = this.head.next; 
+  var pointer2 = pointer1.next;
+  var counter = 0; 
+  
+  while(pointer1 !== pointer2) {
+    pointer1 = pointer1.next; 
+    pointer2 = pointer2.next.next; 
+  }
+  
+  if(pointer1 === pointer2) {
+    pointer1 = node; 
+  }
+  
+  while(pointer1 !== pointer2) {
+    pointer1 = pointer1.next; 
+    pointer2 = pointer2.next.next; 
+  }
+  
+  if(pointer1 === pointer2) {
+    while(pointer1 !== pointer2) {
+      pointer2 = pointer2.next; 
+      counter++; 
+    }
+  }
+
+  return counter; 
 }
