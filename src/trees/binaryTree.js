@@ -26,24 +26,43 @@ BinaryTree.prototype.getLevel = function(node) {
 }
 
 BinaryTree.prototype.DFSearch = function(val) {
-	if(this.left === null && this.right === null) {
-		return false; 
-	}
-	console.log(this.value);
-	if(this.value === val) {
-		return true; 
-	} 
-
-	if(this.left) {
-		this.left.DFSearch(val); 
-	}
-	if(this.right) {
-		this.right.DFSearch(val);
-	}
+	var temp = this; 
+	var stack = [temp]; 
+	while(stack.length > 0) {
+		console.log("DFS:", temp.value);
+		if(temp.value === val) {
+			return true; 
+		} else {
+			temp = stack.pop(); 
+			if(temp.right) {
+				stack.push(temp.right);
+			}
+			if(temp.left) {
+				stack.push(temp.left);
+			}
+		}
+ 	}
+ 	return false; 
 }
 
 BinaryTree.prototype.BFSearch = function(val) {
-	
+	var temp = this; 
+	var queue = [temp];
+	while(queue.length > 0) {
+		//console.log("BFS:", temp.value)
+		if(temp.value === val) {
+			return true; 
+		} else {
+			temp = queue.shift(); 
+			if(temp.left) {
+				queue.push(temp.left);
+			}
+			if(temp.right) {
+				queue.push(temp.right);
+			}
+		}
+	}
+	return false; 
 }
 
 BinaryTree.prototype.countNodes = function() {

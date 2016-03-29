@@ -47,10 +47,18 @@
       tree.right.setRight(15); 
 
       it('should have a depth-first search method', function () {
-        var treeVal = tree.DFSearch(16); 
+        var treeVal = tree.DFSearch(16);
         expect(treeVal).toBe(false); 
       });
 
+      it('should have a breadth-first search method', function () {
+        var treeVal = tree.BFSearch(16); 
+        expect(treeVal).toBe(false);
+      });
+      it('should test the BFS again', function () {
+        var treeVal1 = tree.BFSearch(1); 
+        expect(treeVal1).toBe(true);
+      })
 
     });
 
